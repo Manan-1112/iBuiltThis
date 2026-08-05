@@ -1,9 +1,9 @@
 import HeroSection from "@/components/ui/landing-page/hero-section";
-
+import NavBar from "@/components/ui/navbar/navbar";
 export default function Home() {
   return (
     <main>
-      <h1>iBuiltThis</h1>
+      <NavBar/>
       <HeroSection />
     </main>
   );

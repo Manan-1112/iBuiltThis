@@ -39,11 +39,11 @@ export default function HeroSection() {
                 </div>
                 <div className="flex flex-row gap-18 mt-8">
                     
-                <HeroInfo num="2.5K+" desc="Projects Shared"/>
+                <HeroInfo num="2.5K+" desc="Projects Shared" logo="/rocket-icon.svg"/>
+                <div className=" bg-black w-0.5 opacity-50" ></div>
+                <HeroInfo num="10K+" desc="Active Creators" logo="/users.svg"/>
                 <div className=" bg-black w-0.5 opacity-50"></div>
-                <HeroInfo num="10K+" desc="Active Creators"/>
-                <div className=" bg-black w-0.5 opacity-50"></div>
-                <HeroInfo num="50K+" desc="Monthly Visitors"/>
+                <HeroInfo num="50K+" desc="Monthly Visitors" logo="/views.svg"/>
                 </div>
             </div>
         </section>
