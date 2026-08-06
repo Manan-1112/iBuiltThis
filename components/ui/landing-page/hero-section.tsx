@@ -5,7 +5,7 @@ import HeroInfo from "./hero-info";
 export default function HeroSection() {
     const LiveBadge = () => {
         return (
-            <Badge variant="outline" className="mb-8 px-2 py-4 text-sm backdrop-blur-sm">
+            <Badge variant="outline" className="mb-8 mt-4 px-2 py-4 text-sm backdrop-blur-sm">
                 <span className="relative flex h-2 w-2 mr-1">
                     <span className="absolute h-full w-full animate-ping bg-primary rounded-full opacity-75"></span>
                     <span className="h-2 w-2 relative inline-flex rounded-full bg-primary"></span>
@@ -40,9 +40,9 @@ export default function HeroSection() {
                 <div className="flex flex-row gap-18 mt-8">
                     
                 <HeroInfo num="2.5K+" desc="Projects Shared" logo="/rocket-icon.svg"/>
-                <div className=" bg-black w-0.5 opacity-50" ></div>
+                <div className=" bg-black w-px opacity-50" ></div>
                 <HeroInfo num="10K+" desc="Active Creators" logo="/users.svg"/>
-                <div className=" bg-black w-0.5 opacity-50"></div>
+                <div className=" bg-black w-px opacity-50"></div>
                 <HeroInfo num="50K+" desc="Monthly Visitors" logo="/views.svg"/>
                 </div>
             </div>
