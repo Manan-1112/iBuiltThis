@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge"
 import  Link from "next/link"
 import HeroInfo from "./hero-info";
+import Featured from "../featured-section/featured";
 export default function HeroSection() {
     const LiveBadge = () => {
         return (
@@ -46,6 +47,7 @@ export default function HeroSection() {
                 <HeroInfo num="50K+" desc="Monthly Visitors" logo="/views.svg"/>
                 </div>
             </div>
+            <Featured/>
         </section>
     );
 }
