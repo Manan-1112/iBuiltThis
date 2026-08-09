@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 export default function NavBar(){
     return(
-        <div className="flex sticky items-center justify-center w-screen h-16">
+        <div className="flex sticky top-0 z-50 backdrop-blur-sm items-center justify-center w-screen h-16">
             <h1 className="absolute left-1/5 ">
             <Image alt="logo" src="/logoMain.svg" width={40} height={40}></Image>
             iBuiltThis</h1>
