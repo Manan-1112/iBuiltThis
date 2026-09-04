@@ -2,7 +2,7 @@
 import requireAdmin from "@/lib/admin";
 import { IProject } from "@/models/Project";
 
-import {getAllProjects,getProjectById , createProject} from "@/lib/project";
+import {getAllProjects, createProject} from "@/lib/project";
 export async function POST(req: Request) {
     const userId=await requireAdmin()
     if(!userId) {

@@ -4,15 +4,16 @@ import connectDb from "@/lib/mongodb"
 export function getProjectById(projectId:string){
     return Project.findById(projectId);
 }
-export async function getAllProjects() {
+
+export async function getAllProjects():Promise<IProject[]> {
     await connectDb();
-    const projects=await Project.find();
+    const projects:IProject[]=await Project.find();
     return projects;
 }
 
 export async function createProject(project:IProject) {
     await connectDb();
-    const newProject=await Project.create({
+    const newProject:IProject=await Project.create({
         clerkUserId:project.clerkUserId,
         title:project.title,
         description:project.description,
@@ -20,5 +21,7 @@ export async function createProject(project:IProject) {
         githubLink:project.githubLink,
         liveUrl:project.liveUrl
     }
+
     );
+    return newProject;
 }
