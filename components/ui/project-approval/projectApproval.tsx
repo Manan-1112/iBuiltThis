@@ -1,11 +1,9 @@
 "use client"
 import { notFound } from "next/navigation";
-import { useRouter } from "next/navigation";
 import { useEffect,useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
 export default function ProjectApprovalPage(){
-    const router=useRouter();
     async function getProjects() {
             const res=await fetch("/api/admin/");
             if(!res.ok) {
