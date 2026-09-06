@@ -7,7 +7,7 @@ export function getProjectById(projectId:string){
 
 export async function getAllProjects():Promise<IProject[]> {
     await connectDb();
-    const projects:IProject[]=await Project.find();
+    const projects:IProject[]=await Project.find({projectStatus:"approved"});
     return projects;
 }
 
@@ -24,4 +24,18 @@ export async function createProject(project:IProject) {
 
     );
     return newProject;
+}
+
+export async function getAllPendingProjects(){
+    await connectDb();
+    const projects=await Project.find({projectStatus:"pending"})
+    return projects;
+}
+
+export async function updateProjectStatus(projectId:string,projectStatus:string){
+    await connectDb();
+    const project=await Project.findByIdAndUpdate(projectId,{projectStatus},{returnDocument:"after"});
+    if(!project) return null;
+    return project;
+
 }
