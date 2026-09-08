@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import AdminComp from "@/components/ui/navbar/adminComp"
 import Link from "next/link";
 import { CodeIcon, Compass, CompassIcon, HomeIcon, SparkleIcon, UserIcon } from "lucide-react";
 import { SignInButton, SignUpButton,UserButton,Show } from "@clerk/nextjs";
@@ -27,7 +28,9 @@ export default function NavBar() {
                     Explore
                 </Button>
             </Link>
-
+            <Link href="/admin">
+                <AdminComp/>
+            </Link>
 
             <div className="absolute right-1/5 flex justify-center items-center ">
 
@@ -40,7 +43,7 @@ export default function NavBar() {
             </Show>
             <Show when="signed-in">
                 <Link href="/submit">
-                            <Button variant="ghost" className="bg-[#c94e8c] text-white">
+                            <Button variant="ghost" className="bg-[#c94e8c] text-white mr-4">
                                 <SparkleIcon size={30} stroke="white"></SparkleIcon>
                                 Submit Project</Button>
                         </Link>

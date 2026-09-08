@@ -1,14 +1,18 @@
 import Project, { IProject } from "@/models/Project";
 import connectDb from "@/lib/mongodb"
 
-export function getProjectById(projectId:string){
-    return Project.findById(projectId);
+export function getProjectById(projectId: string) {
+  return Project.findById(projectId).select("title description technologies githubLink liveUrl projectStatus createdAt updatedAt");
 }
 
-export async function getAllProjects():Promise<IProject[]> {
-    await connectDb();
-    const projects:IProject[]=await Project.find({projectStatus:"approved"});
-    return projects;
+export async function getAllProjects(): Promise<IProject[]> {
+  await connectDb();
+  const projects = await Project.find({ projectStatus: "approved" })
+    .select("title description technologies githubLink liveUrl createdAt updatedAt")
+    .sort({ createdAt: -1 })
+    .lean<IProject[]>();
+
+  return projects;
 }
 
 export async function createProject(project:IProject) {
@@ -26,10 +30,14 @@ export async function createProject(project:IProject) {
     return newProject;
 }
 
-export async function getAllPendingProjects(){
-    await connectDb();
-    const projects=await Project.find({projectStatus:"pending"})
-    return projects;
+export async function getAllPendingProjects() {
+  await connectDb();
+  const projects = await Project.find({ projectStatus: "pending" })
+    .select("_id title description technologies githubLink liveUrl createdAt")
+    .sort({ createdAt: -1 })
+    .lean<IProject[]>();
+
+  return projects;
 }
 
 export async function updateProjectStatus(projectId:string,projectStatus:string){
@@ -38,4 +46,14 @@ export async function updateProjectStatus(projectId:string,projectStatus:string)
     if(!project) return null;
     return project;
 
+}
+
+export async function getAllApprovedProjects(): Promise<IProject[]> {
+  await connectDb();
+  const projects = await Project.find({ projectStatus: "approved" })
+    .select("title description technologies githubLink liveUrl createdAt updatedAt")
+    .sort({ createdAt: -1 })
+    .lean<IProject[]>();
+
+  return projects;
 }

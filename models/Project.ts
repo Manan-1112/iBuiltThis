@@ -49,13 +49,17 @@ const ProjectSchema = new Schema<IProject>(
     projectStatus:{
         type:String,
         enum:["pending","approved","rejected"],
-        default:"pending"
+        default:"pending",
+        index: true,
     }
   },
   {
     timestamps: true,
   }
 );
+
+ProjectSchema.index({ projectStatus: 1, createdAt: -1 });
+ProjectSchema.index({ clerkUserId: 1 });
 
 const Project: Model<IProject> =
   mongoose.models.Project ||

@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 export default function AdminPage(){
     return(
-    <div className="wrapper">
+    <div className="">
      <div className="flex sticky top-0 z-50 backdrop-blur-sm items-center justify-center w-screen h-16">
 
             <h1 className="absolute left-1/5 flex justify-center items-center gap-0 text-2xl">
@@ -33,10 +33,9 @@ export default function AdminPage(){
                 </Button>
             </Link>
 
-
+        <div className="absolute bottom-0 w-screen h-px bg-gray-700"></div>
         </div>
-
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 max-w-5xl">Welcome, back Manan!</h1>
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 max-w-5xl mt-4">Welcome, back Manan!</h1>
       <ProjectApprovalPage/>
       </div>
     )
