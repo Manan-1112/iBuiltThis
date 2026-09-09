@@ -2,8 +2,16 @@ import ProjectApprovalPage from "@/components/ui/project-approval/projectApprova
 import { CheckCircle, CodeIcon,HomeIcon, LayoutGridIcon } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-export default function AdminPage(){
-    return(
+import requireAdmin from "@/lib/admin"
+import { RedirectToSignIn } from "@clerk/nextjs"
+
+export default async function AdminPage(){
+    const userId=await requireAdmin();
+    console.log(userId);
+    if(!userId) return (<RedirectToSignIn/>)
+
+    else return(
+
     <div className="">
      <div className="flex sticky top-0 z-50 backdrop-blur-sm items-center justify-center w-screen h-16">
 

@@ -3,23 +3,12 @@ import { Badge } from "@/components/ui/badge"
 import  Link from "next/link"
 import HeroInfo from "./hero-info";
 import Featured from "../featured-section/featured";
+import { LiveBadge } from "../live-badge";
 export default function HeroSection() {
-    const LiveBadge = () => {
-        return (
-            <Badge variant="outline" className="mb-8 mt-4 px-2 py-4 text-sm backdrop-blur-sm">
-                <span className="relative flex h-2 w-2 mr-1">
-                    <span className="absolute h-full w-full animate-ping bg-primary rounded-full opacity-75"></span>
-                    <span className="h-2 w-2 relative inline-flex rounded-full bg-primary"></span>
-                </span>
-                <span className="text-muted-foreground font-medium">Join thousands of creators sharing their work</span>
-
-            </Badge>
-        )
-    }
     return (
         <section className="relative overflow-hidden bg-linear-to-b from-background via-background to-muted/20 ">
             <div className="wrapper flex flex-col items-center justify-center text-center">
-                <LiveBadge />
+                <LiveBadge text="Join thousands of creators sharing their work" />
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 max-w-5xl">
                     Share What You&apos;ve Built, Discover What&apos;s Launching
                 </h1>
