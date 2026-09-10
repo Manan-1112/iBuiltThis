@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
 const technologies = [
   "React",
   "Next.js",
@@ -58,7 +57,7 @@ export default function ProjectForm() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (selectedTechnologies.length === 0) {
@@ -67,8 +66,9 @@ export default function ProjectForm() {
     }
 
     const formData = new FormData(e.currentTarget);
-
+    const userId="user_12ijixj"
     const projectData = {
+      clerkUserId:userId,
       title: formData.get("title"),
       description: formData.get("description"),
       githubUrl: formData.get("githubUrl"),
@@ -78,13 +78,12 @@ export default function ProjectForm() {
     };
 
     console.log(projectData);
-
-    // Yahan API call karna:
-    // await fetch("/api/projects", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(projectData),
-    // });
+    
+    await fetch("/api/projects", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(projectData),
+    });
   };
 
   return (

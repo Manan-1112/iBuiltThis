@@ -22,13 +22,13 @@ export default async function AdminPage(){
                 <span>This</span>
             </h1>
             
-            <Link href="/all">
+            <Link href="/">
                 <Button variant="ghost">
                     <LayoutGridIcon height={30} width={30}></LayoutGridIcon>
                     All Projects
                 </Button>
             </Link>  
-            <Link href="/approved">
+            <Link href="/">
                 <Button variant="ghost">
                     <CheckCircle height={30} width={30}></CheckCircle>
                     Approved Projects
