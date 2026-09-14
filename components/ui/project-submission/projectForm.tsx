@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter} from "next/navigation";
 import { useState } from "react";
 const technologies = [
   "React",
@@ -35,6 +36,7 @@ const technologies = [
 ];
 
 export default function ProjectForm() {
+  const router=useRouter();
   const [techSearch, setTechSearch] = useState("");
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>(
     []
@@ -66,24 +68,31 @@ export default function ProjectForm() {
     }
 
     const formData = new FormData(e.currentTarget);
-    const userId="user_12ijixj"
+    const userId="user_11111"
     const projectData = {
       clerkUserId:userId,
       title: formData.get("title"),
       description: formData.get("description"),
-      githubUrl: formData.get("githubUrl"),
-      liveUrl: formData.get("liveUrl"),
       technologies: selectedTechnologies,
-      category: formData.get("category"),
+      githubLink: formData.get("githubUrl"),
+      liveUrl: formData.get("liveUrl"),
+      projectStatus:"pending",
+      isFeatured:false
+      
     };
 
     console.log(projectData);
     
-    await fetch("/api/projects", {
+    const response=await fetch("/api/projects", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(projectData),
-    });
+    })
+    if(!response.ok){
+      alert("Project Submission Request Failed !")
+    }
+    alert("Project Request Submitted Successfully.")
+    router.push("/")
   };
 
   return (
@@ -179,7 +188,7 @@ export default function ProjectForm() {
 
           <div className="relative">
             {/* Selected technologies + search */}
-            <div className="min-h-[52px] w-full rounded-lg border border-[#8aa5a5] bg-[#faf7e8] px-3 py-2 flex flex-wrap items-center gap-2 focus-within:ring-2 focus-within:ring-[#c94e8c]">
+            <div className="min-h-13 w-full rounded-lg border border-[#8aa5a5] bg-[#faf7e8] px-3 py-2 flex flex-wrap items-center gap-2 focus-within:ring-2 focus-within:ring-[#c94e8c]">
               {selectedTechnologies.map((technology) => (
                 <span
                   key={technology}

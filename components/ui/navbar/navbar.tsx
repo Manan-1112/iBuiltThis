@@ -6,7 +6,7 @@ import { SignInButton, SignUpButton,UserButton,Show } from "@clerk/nextjs";
 export default function NavBar() {
 
     return (
-        <div className="flex sticky top-0 z-50 backdrop-blur-sm items-center justify-center w-screen h-16">
+        <div className="flex sticky top-0 z-50 backdrop-blur-sm items-center justify-center w-screen h-14">
 
             <h1 className="absolute left-1/5 flex justify-center items-center gap-0 text-2xl">
                 <CodeIcon height={40} width={40} stroke="#c94e8c" className="mr-2"></CodeIcon>

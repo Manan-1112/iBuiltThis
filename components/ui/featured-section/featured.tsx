@@ -8,7 +8,8 @@ type Project={
     description:string,
     technologies:[string],
     githubLink:string,
-    liveUrl:string
+    liveUrl:string,
+    isFeatured:boolean
 }
 export default function Featured(){
     const [projects,setProjects]=useState<Project[]>([])
@@ -24,18 +25,19 @@ export default function Featured(){
 
     return(
         <div className="pt-20 pb-20 flex flex-col ">
-           <div className="flex items-center justify-items-start">
+           <div className="px-20">
            
-                <Star width={40} height={40} stroke="#c94e8c"></Star>
-                <h1 className=" text-3xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-2 max-w-5xl ">
+                
+                <h1 className=" text-2xl sm:text-2xl lg:text-3xl font-bold tracking-tight mb-2 max-w-5xl flex items-center gap-2">
+                    <span><Star width={40} height={40} stroke="#c94e8c"></Star></span>
                 Featured Today</h1>
             </div>
-            <p className="text-xl">Top picks from our community this week</p>
-            <div className="m-4 grid grid-cols-3 gap-8">
+            <p className="text-lg px-20">Top picks from our community this week</p>
+            <div className="m-4 grid grid-cols-3 gap-8 px-20 ">
 
               {projects.map((project)=>(
                 (
-                    <Card key={project._id} title={project.title} desc={project.description} tags={project.technologies} githubLink={project.githubLink} liveLink={project.liveUrl}/>
+                    <Card  key={project._id} title={project.title} desc={project.description} tags={project.technologies} githubLink={project.githubLink} liveLink={project.liveUrl} isFeatured={project.isFeatured} projectId={project._id}/>
                 )
     ))}
             </div>

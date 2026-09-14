@@ -13,7 +13,7 @@ export default async function SubmitProjectPage() {
             <NavBar />
 
             <div className="flex flex-col items-center text-center">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-2 max-w-5xl mt-4">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-2 max-w-5xl mt-4">
                     Submit your Project
                 </h1>
 

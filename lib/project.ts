@@ -1,7 +1,8 @@
 import Project, { IProject } from "@/models/Project";
 import connectDb from "@/lib/mongodb"
 
-export function getProjectById(projectId: string) {
+export async function getProjectById(projectId: string) {
+  await connectDb()
   return Project.findById(projectId).select("title description technologies githubLink liveUrl projectStatus createdAt updatedAt");
 }
 
@@ -51,9 +52,21 @@ export async function updateProjectStatus(projectId:string,projectStatus:string)
 export async function getAllApprovedProjects(): Promise<IProject[]> {
   await connectDb();
   const projects = await Project.find({ projectStatus: "approved" })
-    .select("title description technologies githubLink liveUrl createdAt updatedAt")
+    .select("title description technologies githubLink liveUrl createdAt updatedAt isFeatured")
     .sort({ createdAt: -1 })
     .lean<IProject[]>();
 
   return projects;
 }
+// export async function featuredProject(){
+//   await connectDb();
+//   const project=await Project.findOneAndUpdate(
+//     {title:"Modern E-commerce Website"},
+//     {$set:{isFeatured:true}},
+//     {returnDocument:"after"}
+//   );
+//     if(!project) console.log("project not found");
+  
+//     else console.log(project.isFeatured)
+    
+// }
