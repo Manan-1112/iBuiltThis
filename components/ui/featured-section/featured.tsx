@@ -1,27 +1,10 @@
-"use client"
+
 import { Star } from "lucide-react"
 import Card from "./featured-card"
-import { useEffect,useState } from "react"
-type Project={
-    _id:string,
-    title:string,
-    description:string,
-    technologies:[string],
-    githubLink:string,
-    liveUrl:string,
-    isFeatured:boolean
-}
-export default function Featured(){
-    const [projects,setProjects]=useState<Project[]>([])
-    useEffect(() => {
-            const fetchProjects=async () => {
-                const res=await fetch(`/api/projects`);
-                const data=await res.json();
-                setProjects(data);
-            }
-            fetchProjects();
-        }
-    ,[])
+import { getAllApprovedProjects } from "@/lib/project"
+
+export default async function Featured(){
+    const projects=await getAllApprovedProjects();
 
     return(
         <div className="pt-20 pb-20 flex flex-col ">
@@ -37,7 +20,7 @@ export default function Featured(){
 
               {projects.map((project)=>(
                 (
-                    <Card  key={project._id} title={project.title} desc={project.description} tags={project.technologies} githubLink={project.githubLink} liveLink={project.liveUrl} isFeatured={project.isFeatured} projectId={project._id}/>
+                    <Card  key={project._id.toString()} title={project.title} desc={project.description} tags={project.technologies} githubLink={project.githubLink} liveLink={project.liveUrl} isFeatured={project.isFeatured} projectId={project._id.toString()}/>
                 )
     ))}
             </div>

@@ -8,10 +8,11 @@ export interface IProject extends Document {
   technologies: string[];
   githubLink?: string;
   liveUrl?: string;
-  projectStatus:ProjectStatus,
-  isFeatured:boolean
+  projectStatus: ProjectStatus;
+  isFeatured: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
-
 const ProjectSchema = new Schema<IProject>(
   {
     clerkUserId: {

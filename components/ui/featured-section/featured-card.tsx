@@ -2,19 +2,18 @@ type props = {
     title: string,
     desc: string,
     tags?: string[],
-    githubLink:string,
-    liveLink:string,
+    githubLink?:string,
+    liveLink?:string,
     isFeatured?:boolean,
     projectId:string
 }
 import { Badge } from "@/components/ui/badge"
-import { useRouter } from "next/navigation"
-import { ExternalLinkIcon } from "lucide-react"
 import Link from "next/link"
 export default function Card({ title, desc, tags,githubLink,liveLink,isFeatured,projectId }: props) {
-    const router=useRouter();
+    
     return (
-        <div onClick={()=>router.push(`/projects/${projectId}`)} className="card-hover bg-card rounded-xl border flex flex-col items-center p-4 cursor-pointer transform min-h-25">
+        <Link href={`projects/${projectId}`}>
+        <div className="card-hover bg-card rounded-xl border flex flex-col items-center p-4 cursor-pointer transform min-h-25">
             <div className="flex gap-2">
                 <h1 className="text-xl font-semibold ">{title}</h1>
                {isFeatured && ( <Badge className="h-6 font-medium text-white">
@@ -24,20 +23,12 @@ export default function Card({ title, desc, tags,githubLink,liveLink,isFeatured,
                     Featured</Badge>)}
             </div>
             <p className="text-md text-black pt-1 pb-4">{desc}</p>
-            <span className="flex items-center gap-6 pb-2 font-semibold text-sm mb-4">
-            <Link href={githubLink} className="flex items-center gap-1 ">
-            Github Repo
-            <ExternalLinkIcon></ExternalLinkIcon>
-                </Link>
-             <Link className="flex items-center gap-1" href={liveLink}>Live Link
-             <ExternalLinkIcon></ExternalLinkIcon>
-             </Link>
-            </span>
+            
             <div className="grid grid-cols-4 gap-2">
                 {tags?.map((t, index) => (
                     <Badge
                         key={index}
-                        className="text-xs p-4 text-center bg-secondary text-secondary-foreground shadow-secondary-foreground max-w-full whitespace-normal"
+                        className="text-xs  p-4 truncate text-center bg-secondary text-secondary-foreground shadow-secondary-foreground max-w-full whitespace-normal"
                     >
                         {t}
                     </Badge>
@@ -45,6 +36,7 @@ export default function Card({ title, desc, tags,githubLink,liveLink,isFeatured,
             </div>
 
         </div>
+        </Link>
     )
 
 }
