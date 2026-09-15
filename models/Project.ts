@@ -8,15 +8,16 @@ export interface IProject extends Document {
   technologies: string[];
   githubLink?: string;
   liveUrl?: string;
-  projectStatus:ProjectStatus
+  projectStatus: ProjectStatus;
+  isFeatured: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
-
 const ProjectSchema = new Schema<IProject>(
   {
     clerkUserId: {
       type: String,
       required: true,
-      index: true,
     },
 
     title: {
@@ -51,6 +52,10 @@ const ProjectSchema = new Schema<IProject>(
         enum:["pending","approved","rejected"],
         default:"pending",
         index: true,
+    },
+    isFeatured:{
+        type:Boolean,
+        default:false
     }
   },
   {
